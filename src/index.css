@@ -1,0 +1,504 @@
+:root {
+  --bg-dark: #0a192f;
+  --bg-card: #112240;
+  --text-bright: #64ffda;
+  --text-light: #e6f1ff;
+  --text-muted: #8892b0;
+  --border: #233554;
+  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text-muted);
+  background-color: var(--bg-dark);
+  overflow-x: hidden;
+}
+
+/* Animasi Presentasi Saat Reload (Keyframes) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.entry-animation {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-delay-1 { animation-delay: 0.15s; }
+.animate-delay-2 { animation-delay: 0.3s; }
+.animate-delay-3 { animation-delay: 0.45s; }
+
+/* Navbar Setup */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 10%;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(23, 42, 69, 0.7);
+}
+
+.navbar .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  letter-spacing: 1px;
+}
+
+.navbar .logo span {
+  color: var(--text-bright);
+}
+
+.nav-links .nav-item {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition);
+  padding: 0.5rem 0;
+}
+
+.nav-links .nav-item::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--text-bright);
+  transition: var(--transition);
+}
+
+.nav-links .nav-item:hover {
+  color: var(--text-bright);
+}
+
+.nav-links .nav-item:hover::after {
+  width: 100%;
+}
+
+.nav-links .nav-item:active {
+  transform: scale(0.95);
+}
+
+/* Perbaikan Jarak Atas Header (Hero Section) */
+.hero {
+  padding: 4rem 10% 6rem 10%; /* Renggang atas dipersempit dari 10rem menjadi 4rem */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-sub {
+  color: var(--text-bright);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: monospace;
+}
+
+.hero-title {
+  font-size: 4rem;
+  color: var(--text-light);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-title span {
+  color: var(--text-bright);
+}
+
+.hero-tagline {
+  font-size: 3.5rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+  max-width: 540px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+/* Buttons */
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: transparent;
+  color: var(--text-bright);
+  border: 1px solid var(--text-bright);
+}
+
+.btn-primary:hover {
+  background: rgba(100, 255, 218, 0.1);
+  box-shadow: 0 4px 20px rgba(100, 255, 218, 0.15);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-light);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-bright);
+  color: var(--text-bright);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* Sections */
+.section {
+  padding: 5rem 10%;
+}
+
+.bg-card-dark {
+  background-color: rgba(17, 34, 64, 0.3);
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--text-light);
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 200px;
+  height: 1px;
+  margin-left: 20px;
+  background-color: var(--border);
+}
+
+/* About Content */
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.about-content strong {
+  color: var(--text-bright);
+}
+
+.fun-facts {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 6px;
+  border-left: 4px solid var(--text-bright);
+  margin-bottom: 2.5rem;
+}
+
+.fun-facts h3 {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.fun-facts ul {
+  list-style-type: none;
+}
+
+.fun-facts li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+  line-height: 1.5;
+}
+
+.fun-facts li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--text-bright);
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-tag {
+  background: rgba(23, 42, 69, 0.7);
+  color: var(--text-light);
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: monospace;
+  transition: var(--transition);
+}
+
+.skill-tag:hover {
+  border-color: var(--text-bright);
+  color: var(--text-bright);
+  transform: translateY(-2px);
+}
+
+/* Project Cards Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--bg-card);
+  padding: 2.25rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.project-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.project-place {
+  color: var(--text-bright);
+  font-size: 0.9rem;
+  font-family: monospace;
+  margin-bottom: 1rem;
+}
+
+.project-card p:not(.project-place) {
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.project-tags span {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: rgba(10, 25, 47, 0.5);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* Contact Section & Social Media */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+  .hero-title { font-size: 2.8rem; }
+  .hero-tagline { font-size: 2.3rem; }
+}
+
+.contact-info h3 {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.contact-info p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.info-links p {
+  margin-bottom: 0.5rem;
+}
+
+.info-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.info-links a:hover {
+  color: var(--text-bright);
+}
+
+.social-media {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  color: var(--text-light);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.social-icon:hover {
+  color: var(--text-bright);
+  border-color: var(--text-bright);
+  background: rgba(100, 255, 218, 0.05);
+  transform: translateY(-3px);
+}
+
+.social-icon:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input, .contact-form textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none;
+  border-color: var(--text-bright);
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+}
+
+.form-status {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: var(--text-bright);
+  font-family: monospace;
+  text-align: center;
+}
+
+/* Footer Section */
+.footer {
+  text-align: center;
+  padding: 2.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-family: monospace;
+}
+/* Desain Grid dan Kotak Ikon Kontak */
+.social-icons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-light);
+  text-decoration: none;
+  background: var(--bg-card);
+  padding: 0.85rem 1.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+/* Ukuran Grafik Ikon */
+.icon-graphic {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.icon-box span {
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+/* Efek Hover: Kotak menyala cyan, ikon ikut berubah warna */
+.icon-box:hover {
+  border-color: var(--text-bright);
+  background: rgba(100, 255, 218, 0.03);
+  transform: translateX(5px); /* Efek bergeser sedikit ke kanan saat disorot */
+}
+
+.icon-box:hover .icon-graphic {
+  color: var(--text-bright);
+}
+
+.icon-box:hover span {
+  color: var(--text-bright);
+}
+
+/* Efek Klik Animasi Merapat */
+.icon-box:active {
+  transform: translateX(2px) scale(0.98);
+}
